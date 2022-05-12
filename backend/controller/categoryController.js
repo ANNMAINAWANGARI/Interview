@@ -1,20 +1,19 @@
 const TodoCategory = require("../model/category");
 
-exports.getCategory = async(req,res)=>{
-try {
+exports.getCategory = async (req, res) => {
+  try {
     const categories = await TodoCategory.find()
-    .populate("name")
-        res.status(200).json({
-            message:'Categories fetched',
-            data:categories
-        })
-    
-} catch (error) {
+   res.status(200).json({
+      message: "Categories fetched",
+      data: categories,
+    });
+  } catch (error) {
     res.status(404).json({
-        message:'Categories not found',
-        error:error.message
-    })
-}}
+      message: "Categories not found",
+      error: error.message,
+    });
+  }
+};
 exports.postCategory = async (req, res) => {
   try {
     const { name } = req.body;

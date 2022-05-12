@@ -40,7 +40,7 @@ const Todo = ({ heading, messagecontext, id,category,createdAt,updatedAt }) => {
           {heading}
         </h2>
         <h4 style={{ margin: 0, textAlign: "left" }}>{messagecontext}</h4>
-        <h5 style={{ margin: 0, textAlign: "left" ,color:'red'}}>{category}</h5>
+        {/*<h5 style={{ margin: 0, textAlign: "left" ,color:'red'}}>{category}</h5>*/}
         <h6 style={{ margin: 0, textAlign: "left" ,color:'black'}}>CreatedAt :{createdAt}</h6>
         <h6 style={{ margin: 0, textAlign: "left" ,color:'black'}}>UpdatedAt :{updatedAt}</h6>
       </div>

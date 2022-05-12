@@ -147,7 +147,7 @@ function App() {
               heading={todo.title}
               messagecontext={todo.message}
               id={todo._id}
-              category={todo.categoryName}
+              //category={todo.categoryName.name}
               createdAt={todo.createdAt}
               updatedAt={todo.updatedAt}
             />

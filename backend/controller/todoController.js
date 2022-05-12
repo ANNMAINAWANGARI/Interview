@@ -2,8 +2,8 @@ const Todo = require("../model/todo");
 
 exports.getAllTodo = async (req, res) => {
   try {
-    const categories = await Todo.find();
-    //.populate("categoryName")
+    const categories = await Todo.find()
+    .populate("categoryName")
     res.status(200).json({
       message: "Categories fetched",
       data: categories,

@@ -3,7 +3,7 @@ const TodoCategory = require("../model/category");
 const TodoSchema = new mongoose.Schema(
   {
     categoryName: {
-      type: mongoose.Schema.Types.String,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "TodoCategory",
     },
