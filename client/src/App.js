@@ -6,7 +6,6 @@ function App() {
   const [state, setState] = React.useState({ title: "", message: "" });
   const [category, setCategory] = React.useState("");
   const [todos, setTodos] = React.useState([]);
-  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -57,7 +56,6 @@ function App() {
         alignItems: "center",
       }}
     >
-      
       <h1>Live Interview</h1>
       <section style={{ width: "50%", height: "5vh" }}>
         <form
@@ -95,7 +93,7 @@ function App() {
           />
 
           <button type="submit" style={{ height: "100%" }}>
-            Post
+            CreateTodo
           </button>
         </form>
       </section>
@@ -145,7 +143,14 @@ function App() {
       <section>
         {todos.map((todo) => (
           <div key={todo._id}>
-          <Todo  heading={todo.title} messagecontext={todo.message} id={todo._id} category={todo.categoryName}/>
+            <Todo
+              heading={todo.title}
+              messagecontext={todo.message}
+              id={todo._id}
+              category={todo.categoryName}
+              createdAt={todo.createdAt}
+              updatedAt={todo.updatedAt}
+            />
           </div>
         ))}
       </section>

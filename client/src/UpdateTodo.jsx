@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-const UpdateTodo = ({ title, message, category, identity }) => {
+const UpdateTodo = ({  identity ,createdAt, updatedAt}) => {
   const [state, setState] = React.useState({ title: "", message: "" });
   const [categoryChange, setCategoryChange] = React.useState("");
   const handleTitleChange = (e) => {
@@ -49,7 +49,7 @@ const UpdateTodo = ({ title, message, category, identity }) => {
           value={categoryChange}
           onChange={handleCategoryChange}
         />
-        <button type="submit">Edit</button>
+        <button type="submit">Update</button>
       </form>
     </div>
   );

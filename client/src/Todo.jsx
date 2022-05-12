@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import UpdateTodo from "./UpdateTodo";
-const Todo = ({ heading, messagecontext, id,category }) => {
+const Todo = ({ heading, messagecontext, id,category,createdAt,updatedAt }) => {
   const [show, setShow] = React.useState(false);
 
   const deleteTodo = async () => {
@@ -22,6 +22,9 @@ const Todo = ({ heading, messagecontext, id,category }) => {
         alignItems: "center",
         width: "70vw",
         justifyContent: "space-between",
+        border:'1px solid black',
+        margin:2,
+        padding:2
       }}
     >
       {show && (
@@ -36,7 +39,10 @@ const Todo = ({ heading, messagecontext, id,category }) => {
         <h2 style={{ margin: 0, color: "green", textAlign: "left" }}>
           {heading}
         </h2>
-        <h5 style={{ margin: 0, textAlign: "left" }}>{messagecontext}</h5>
+        <h4 style={{ margin: 0, textAlign: "left" }}>{messagecontext}</h4>
+        <h5 style={{ margin: 0, textAlign: "left" ,color:'red'}}>{category}</h5>
+        <h6 style={{ margin: 0, textAlign: "left" ,color:'black'}}>CreatedAt :{createdAt}</h6>
+        <h6 style={{ margin: 0, textAlign: "left" ,color:'black'}}>UpdatedAt :{updatedAt}</h6>
       </div>
       <div style={{ marginLeft: "55px" }}>
         <button
