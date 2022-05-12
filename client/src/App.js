@@ -2,20 +2,12 @@ import "./App.css";
 import React, { useEffect } from "react";
 import axios from "axios";
 import Todo from "./Todo";
-import UpdateTodo from "./UpdateTodo";
 function App() {
   const [state, setState] = React.useState({ title: "", message: "" });
   const [category, setCategory] = React.useState("");
   const [todos, setTodos] = React.useState([]);
-  const [isUpdating, setIsUpdating] = React.useState(false);
+  
 
-  const deleteTodo = async (id) => {
-    try {
-      await axios.delete(`http://localhost:8000/api/todo/${id}`);
-    } catch (err) {
-      console.log(err);
-    }
-  };
   function handleSubmit(e) {
     e.preventDefault();
     const todo = {
@@ -65,7 +57,7 @@ function App() {
         alignItems: "center",
       }}
     >
-      {!isUpdating && <UpdateTodo />}
+      
       <h1>Live Interview</h1>
       <section style={{ width: "50%", height: "5vh" }}>
         <form
@@ -153,7 +145,7 @@ function App() {
       <section>
         {todos.map((todo) => (
           <div key={todo._id}>
-          <Todo  heading={todo.title} messagecontext={todo.message} id={todo.id} categ/>
+          <Todo  heading={todo.title} messagecontext={todo.message} id={todo._id} category={todo.categoryName}/>
           </div>
         ))}
       </section>

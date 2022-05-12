@@ -35,15 +35,16 @@ exports.postCreateTodo = async (req, res) => {
 };
 exports.putUpdateTodo = async (req, res) => {
   try {
-    const update = req.body;
-    const todo = await Todo.findByIdAndUpdate(req.params.id, update);
+    //const update = req.body;
+    const { categoryName, title, message } = req.body;
+    const todo = await Todo.findByIdAndUpdate(req.params.id, {  title, message,categoryName, });
     res.status(200).json({
       message: "Todo updated successfully",
       data: todo,
     });
   } catch (error) {
     res.status(400).json({
-      message: "Failed to add category",
+      message: "Failed to update category",
       error: error.message,
     });
   }
