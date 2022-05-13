@@ -3,7 +3,6 @@ const Category = new mongoose.Schema(
   {
     name: {
       type: String,
-      ref: "Todo",
       required: [true, "Please enter the category"],
     },
   },

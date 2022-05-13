@@ -1,9 +1,10 @@
 const TodoCategory = require("../model/category");
+const Todo = require("../model/todo");
 
 exports.getCategory = async (req, res) => {
   try {
-    const categories = await TodoCategory.find()
-   res.status(200).json({
+    const categories = await TodoCategory.find();
+    res.status(200).json({
       message: "Categories fetched",
       data: categories,
     });
@@ -17,7 +18,7 @@ exports.getCategory = async (req, res) => {
 exports.postCategory = async (req, res) => {
   try {
     const { name } = req.body;
-    const post = await TodoCategory.create({ name });
+    const post = await TodoCategory.create({name});
     res.status(200).json({
       message: "Post Category created",
       data: post,

@@ -6,17 +6,18 @@ function App() {
   const [state, setState] = React.useState({ title: "", message: "" });
   const [category, setCategory] = React.useState("");
   const [todos, setTodos] = React.useState([]);
+  const [id, setId] = React.useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    const todo = {
-      title: state.title,
-      message: state.message,
-    };
-    console.log({ todo });
-    axios
+    axios.all([
+      axios.post("http://localhost:8000/api/categories/category",{
+        name:category
+      }).then((categoryid)=>setId(categoryid.data.data._id))
+      , 
+      axios
       .post("http://localhost:8000/api/todo/post", {
-        categoryName: category,
+        categoryName: id,
         title: state.title,
         message: state.message,
       })
@@ -25,10 +26,12 @@ function App() {
         setCategory("");
         console.log("Good", res.data.message);
       })
-      .catch((err) => {
-        console.log("Error couldn't create TODO");
-        console.log(err.message);
-      });
+      
+    ])
+    .then(axios.spread((data1, data2) => {
+      console.log('data1', data1, 'data2', data2)
+    }));
+    
   }
   useEffect(() => {
     axios.get("http://localhost:8000/api/todo").then((data) => {

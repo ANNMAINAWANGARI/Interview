@@ -1,13 +1,15 @@
+const TodoCategory = require("../model/category");
 const Todo = require("../model/todo");
 
 exports.getAllTodo = async (req, res) => {
   try {
-    const categories = await Todo.find()
-    .populate("categoryName")
+    const categories = await Todo.find({}).populate("categoryName")
+
     res.status(200).json({
       message: "Categories fetched",
       data: categories,
-    });
+    })
+    console.log(categories)
   } catch (error) {
     res.status(404).json({
       message: "Categories not found",
@@ -16,11 +18,14 @@ exports.getAllTodo = async (req, res) => {
   }
 };
 
-
 exports.postCreateTodo = async (req, res) => {
   try {
-    const { categoryName, title, message } = req.body;
-    const todo = await Todo.create({ categoryName, title, message });
+    //const { categoryName, title, message } = req.body;
+    const todo = await Todo.create({
+      categoryName: req.body.categoryName,
+      title: req.body.title,
+      message: req.body.message,
+    });
     res.status(200).json({
       message: "Post Category created",
       data: todo,
@@ -37,7 +42,11 @@ exports.putUpdateTodo = async (req, res) => {
   try {
     //const update = req.body;
     const { categoryName, title, message } = req.body;
-    const todo = await Todo.findByIdAndUpdate(req.params.id, {  title, message,categoryName, });
+    const todo = await Todo.findByIdAndUpdate(req.params.id, {
+      title,
+      message,
+      categoryName,
+    });
     res.status(200).json({
       message: "Todo updated successfully",
       data: todo,
