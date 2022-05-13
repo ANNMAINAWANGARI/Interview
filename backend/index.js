@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors({origin:'http://localhost:3000'}))
 app.use("/api/todo", todo);
 app.use("/api/categories", category);
-mongoose.connect('mongodb+srv://admin:admin@interview.v46sv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', () => {
+mongoose.connect(process.env.MONGO_CONNECT, () => {
   console.log("database running");
 });
 app.listen(PORT, () => {
